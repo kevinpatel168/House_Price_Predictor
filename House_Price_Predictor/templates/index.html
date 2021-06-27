@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>price predector</title>
+  <link rel="stylesheet" >
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+
+  <style>
+  @import url(https://fonts.googleapis.com/css?family=Roboto:300);
+
+    .switch-field {
+      margin: auto;
+      width: 76%;
+      display: flex;
+      margin-bottom: 10px;
+      overflow: hidden;
+    }
+
+    .switch-field input {
+      position: absolute !important;
+      clip: rect(0, 0, 0, 0);
+      height: 1px;
+      width: 1px;
+      border: 0;
+      overflow: hidden;
+    }
+
+    .switch-field label {
+      width: 20%;
+      background-color: #e4e4e4;
+      color: rgba(0, 0, 0, 0.6);
+      font-size: 14px;
+      line-height: 1;
+      text-align: center;
+      padding: 8px 16px;
+      margin-right: -1px;
+      border: 1px solid rgba(0, 0, 0, 0.2);
+      box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.1);
+      transition: all 0.1s ease-in-out;
+    }
+
+    .switch-field label:hover {
+      cursor: pointer;
+    }
+
+    .switch-field input:checked + label {
+      background-color: #EF4444;
+      box-shadow: none;
+    }
+
+    .switch-field label:first-of-type {
+      border-radius: 4px 0 0 4px;
+
+    }
+
+    .switch-field label:last-of-type {
+      border-radius: 0 4px 4px 0;
+      
+    }
+
+    .form {
+      width: 500px;
+      max-width: 500px;
+      font-family: "Lucida Grande", Tahoma, Verdana, sans-serif;
+      font-weight: normal;
+      line-height: 1.625;
+      margin: 8px auto;
+      padding-left: 16px;
+      z-index: 2;
+    }
+
+    h2 {
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+    .area {
+      font-family: "Roboto", sans-serif;
+      outline: 0;
+      background: #f2f2f2;
+      width: 75%;
+      border: 0;
+      margin: 0 0 10px;
+      padding: 10px;
+      box-sizing: border-box;
+      font-size: 15px;
+      height: 35px;
+      border-radius: 5px;
+    }
+
+    .location {
+      font-family: "Roboto", sans-serif;
+      outline: 0;
+      background: #f2f2f2;
+      width: 75%;
+      border: 0;
+      margin: 0 0 10px;
+      padding: 10px;
+      box-sizing: border-box;
+      font-size: 15px;
+      height: 40px;
+      border-radius: 5px;
+    }
+
+    .submit {
+      margin: auto;
+      color: white;
+      width: 75%;
+      border: 0;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      box-sizing: border-box;
+      font-size: 15px;
+      height: 35px;
+      text-align: center;
+      border-radius: 5px;
+    }
+
+    .result {
+      color: white;
+      background: #EF4444;
+      width: 75%;
+      border: 1px ;
+      margin-top:10px;
+      margin: auto;
+      box-sizing: border-box;
+      font-size: 15px;
+      text-align: center;
+      border-radius: 5px;
+      padding: 6px 10px;
+
+    }
+
+    body,
+    html {
+      height: 100%;
+    }
+  </style>
+    <!--Start of Tawk.to Script-->
+      <script type="text/javascript">
+      var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+      (function(){
+        var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+        s1.async=true;
+        s1.src='https://embed.tawk.to/60734385f7ce1827093948f0/1f313vh47';
+        s1.charset='UTF-8';
+        s1.setAttribute('crossorigin','*');
+        s0.parentNode.insertBefore(s1,s0);
+      })();
+    </script>
+    <!--End of Tawk.to Script-->
+</head>
+
+<body>
+  <!-- navbar -->
+  <header class="text-gray-600 body-font">
+    <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+      <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
+        <img src="{{url_for('static', filename='house1.png')}}" style="height:30px; width:30px;"/>
+        <span class="ml-3 text-xl">Proparty Price Predictor</span>
+      </a>
+      <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
+        <a class="mr-5 hover:text-gray-900">Home</a>
+
+    </div>
+  </header>
+
+  <!-- hero section -->
+  <section class="text-gray-600 body-font">
+    <div class="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
+      <div
+        class="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
+        <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">Property
+          <br class="hidden lg:inline-block">Price Predictor
+        </h1>
+        <p class="mb-8 leading-relaxed">
+          You are looking for a new house in Bengaluru?</br>
+          We are bringing a price calculation software for your dream house.</br>
+          Coming soon for othe locations.
+        </p>
+        <div class="flex justify-center">
+          <button
+            class="inline-flex text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-00 rounded text-lg ">
+            <a href="#check">Check Now</a></button>
+        </div>
+      </div>
+      <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6">
+        <img class="object-cover object-center rounded" alt="hero"
+          src="https://images.unsplash.com/photo-1522050212171-61b01dd24579?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80">
+      </div>
+    </div>
+  </section>
+  <section id="check" class="text-gray-600 body-font" style="padding-top: 2rem;">
+    <div class="container px-5 mx-auto flex flex-wrap">
+      <div class="flex flex-wrap w-full">
+        <!-- Timeline  -->
+        <div class="lg:w-2/5 md:w-1/2 md:pr-10 md:py-6">
+          <div class="flex relative pb-12">
+            <div class="h-full w-10 absolute inset-0 flex items-center justify-center">
+              <div class="h-full w-1 bg-gray-200 pointer-events-none"></div>
+            </div>
+            <div
+              class="flex-shrink-0 w-10 h-10 rounded-full bg-red-500 inline-flex items-center justify-center text-white relative z-10">
+             
+              <img src="{{url_for('static', filename='location (2).png')}}" style="height:25px; width:25px; color:white;"/>
+            </div>
+            <div class="flex-grow pl-4">
+              <h2 class="font-medium title-font text-sm text-gray-900 mb-1 tracking-wider">Choose Location</h2>
+              <p class="leading-relaxed">Pick best location for you.</p>
+            </div>
+          </div>
+          <div class="flex relative pb-12">
+            <div class="h-full w-10 absolute inset-0 flex items-center justify-center">
+              <div class="h-full w-1 bg-gray-200 pointer-events-none"></div>
+            </div>
+            <div
+              class="flex-shrink-0 w-10 h-10 rounded-full bg-red-500 inline-flex items-center justify-center text-white relative z-10">
+              <img src="{{url_for('static', filename='area-graph.png')}}" style="height:25px; width:25px; color:white;"/>
+            </div>
+            <div class="flex-grow pl-4">
+              <h2 class="font-medium title-font text-sm text-gray-900 mb-1 tracking-wider">Select Area</h2>
+              <p class="leading-relaxed">Give your comfort area size.</p>
+            </div>
+          </div>
+          <div class="flex relative pb-12">
+            <div class="h-full w-10 absolute inset-0 flex items-center justify-center">
+              <div class="h-full w-1 bg-gray-200 pointer-events-none"></div>
+            </div>
+            <div
+              class="flex-shrink-0 w-10 h-10 rounded-full bg-red-500 inline-flex items-center justify-center text-white relative z-10">
+              <img src="{{url_for('static', filename='room.png')}}" style="height:25px; width:25px; color:white;"/>
+            </div>
+            <div class="flex-grow pl-4">
+              <h2 class="font-medium title-font text-sm text-gray-900 mb-1 tracking-wider">Select Bedrooms</h2>
+              <p class="leading-relaxed">Select how many Bedrooms you want.</p>
+            </div>
+          </div>
+          <div class="flex relative pb-12">
+            <div class="h-full w-10 absolute inset-0 flex items-center justify-center">
+              <div class="h-full w-1 bg-gray-200 pointer-events-none"></div>
+            </div>
+            <div
+              class="flex-shrink-0 w-10 h-10 rounded-full bg-red-500 inline-flex items-center justify-center text-white relative z-10">
+              <img src="{{url_for('static', filename='bathroom (1).png')}}" style="height:25px; width:25px; color:white;"/>
+            </div>
+            <div class="flex-grow pl-4">
+              <h2 class="font-medium title-font text-sm text-gray-900 mb-1 tracking-wider">Select Bathrooms</h2>
+              <p class="leading-relaxed">Select how many bathrooms you want.</p>
+            </div>
+          </div>
+          <div class="flex relative">
+            <div
+              class="flex-shrink-0 w-10 h-10 rounded-full bg-red-500 inline-flex items-center justify-center text-white relative z-10">
+              <img src="{{url_for('static', filename='calculator.png')}}" style="height:25px; width:25px; color:white;"/>
+            </div>
+            <div class="flex-grow pl-4">
+              <h2 class="font-medium title-font text-sm text-gray-900 mb-1 tracking-wider">Calculate The Price</h2>
+              <p class="leading-relaxed">Press the calculate and you get idea of your house price.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- price detector tool code  -->
+        <form class="form" style="align-items: center ; text-align:center;
+        margin-top: 30px;" action="{{ url_for('get_details')}}" method="post">
+
+          <h2 for="location">Location:</h2>
+          <select class="location" name="name" id="location" >
+            {% for location in context.location %}
+            <option value="{{location}}">{{location}}</option>
+            {% endfor %}
+          </select>
+
+          <h2>Area (Square feet)</h2>
+          <input class="area" type="number" id="area" name="aname" placeholder="area" required ><br>
+      
+          <h2>Bedrooms</h2>
+          <div class=" switch-field">
+          <input type="radio" id="radio-bhk-1" name="bhknumber" value="1" required/>
+          <label for="radio-bhk-1">1</label>
+          <input type="radio" id="radio-bhk-2" name="bhknumber" value="2" />
+          <label for="radio-bhk-2">2</label>
+          <input type="radio" id="radio-bhk-3" name="bhknumber" value="3" />
+          <label for="radio-bhk-3">3</label>
+          <input type="radio" id="radio-bhk-4" name="bhknumber" value="4" />
+          <label for="radio-bhk-4">4</label>
+          <input type="radio" id="radio-bhk-5" name="bhknumber" value="5" />
+          <label for="radio-bhk-5">5</label>
+      </div>
+
+      <h2>Bathrooms</h2>
+      <div class="switch-field">
+        <input type="radio" id="radio-bath-1" name="bnumber" value="1" required/>
+        <label for="radio-bath-1">1</label>
+        <input type="radio" id="radio-bath-2" name="bnumber" value="2"/>
+        <label for="radio-bath-2">2</label>
+        <input type="radio" id="radio-bath-3" name="bnumber" value="3"/>
+        <label for="radio-bath-3">3</label>
+        <input type="radio" id="radio-bath-4" name="bnumber" value="4"/>
+        <label for="radio-bath-4">4</label>
+        <input type="radio" id="radio-bath-5" name="bnumber" value="5"/>
+        <label for="radio-bath-5">5</label>
+      </div>
+
+      <button class="submit bg-red-500 " type="submit">Calculate</button>
+      <div class="result bg-red-300" >
+        {{context.result}} lakh
+      </div>
+        </form>
+      
+    </div>
+  </section>
+  <!-- footer -->
+  <footer class="text-gray-600 body-font">
+    <div class="container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col">
+      <a class=" flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
+        <img src="{{url_for('static', filename='house1.png')}}" style="height:25px; width:25px; color:white;"/>
+        <span class="ml-3 text-xl">Proparty Price Predictor</span>
+      </a>
+      <p class="text-sm text-gray-500 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4">© 2021
+        Proparty Price Predictor
+      </p>
+      <span class="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
+        <a class="text-gray-500">
+          <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5"
+            viewBox="0 0 24 24">
+            <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
+          </svg>
+        </a>
+        <a class="ml-3 text-gray-500">
+          <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5"
+            viewBox="0 0 24 24">
+            <path
+              d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z">
+            </path>
+          </svg>
+        </a>
+        <a class="ml-3 text-gray-500">
+          <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            class="w-5 h-5" viewBox="0 0 24 24">
+            <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+            <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"></path>
+          </svg>
+        </a>
+        <a class="ml-3 text-gray-500">
+          <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="0"
+            class="w-5 h-5" viewBox="0 0 24 24">
+            <path stroke="none"
+              d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"></path>
+            <circle cx="4" cy="4" r="2" stroke="none"></circle>
+          </svg>
+        </a>
+      </span>
+    </div>
+  </footer>
+
+  <!-- smooth scrolling script -->
+  <script>
+    $(function () {
+      $('a[href*=\\#]:not([href=\\#])').on('click', function () {
+        var target = $(this.hash);
+        target = target.length ? target : $('[name=' + this.hash.substr(1) + ']');
+        if (target.length) {
+          $('html,body').animate({
+            scrollTop: target.offset().top
+          }, 1000);
+          return false;
+        }
+      });
+    });
+  </script>
+</body>
+
+</html>
